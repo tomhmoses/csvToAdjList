@@ -5,7 +5,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     colors = ['red','green','blue','orange']
-    return render_template('index.html', colors=colors)
+    carModels = ['Audi','Mercedes','BMW']
+    return render_template('index.html', colors=colors, cars=carModels)
 
 @app.route('/api', methods=['POST'])
 def api():

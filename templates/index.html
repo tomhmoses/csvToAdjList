@@ -6,10 +6,9 @@
     <form action="api" method="post">
         <label for="car">Choose a car:</label>
         <select id="car" name="car">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
+            {% for car in cars %}
+                <option value="{{car}}">{{car}}</option>
+            {% endfor %}
         </select>
 
         <label for="color">Choose a colour:</label>
