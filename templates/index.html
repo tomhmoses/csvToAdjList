@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Tom's Car Shop</h1>
+    <form action="api" method="post">
+        <label for="car">Choose a car:</label>
+        <select id="car" name="car">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Audi</option>
+        </select>
+
+        <label for="color">Choose a colour:</label>
+        <select id="color" name="color">
+            <!-- <option value="blue">Ice Cold and Refreshing Blue</option>
+            <option value="red">Great Balls of Fire (red)</option>
+            <option value="green">Green with Envy</option>
+            <option value="white">White as Snow</option> -->
+            {% for color in colors %}
+                <option value="{{color}}">{{color}}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="submit" />
+    </form>
+</body>
+
+</html>
