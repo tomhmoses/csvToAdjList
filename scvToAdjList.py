@@ -33,6 +33,7 @@ def convert():
                 line_count += 1
         print(f'Processed {line_count} lines.')
         print(adjList)
+        return adjList
 
 if __name__ == "__main__":
     convert()

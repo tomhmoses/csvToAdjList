@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+from scvToAdjList import convert 
 
 app = Flask(__name__)
 
@@ -13,6 +14,12 @@ def api():
     color = request.form['color']
     car = request.form['car']
     return f'A {color} {car}, coming right up...'
+
+@app.route('/adj')
+def adj():
+    result = convert()
+    return result
+
 
 
 
