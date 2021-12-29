@@ -13,10 +13,6 @@
 
         <label for="color">Choose a colour:</label>
         <select id="color" name="color">
-            <!-- <option value="blue">Ice Cold and Refreshing Blue</option>
-            <option value="red">Great Balls of Fire (red)</option>
-            <option value="green">Green with Envy</option>
-            <option value="white">White as Snow</option> -->
             {% for color in colors %}
                 <option value="{{color}}">{{color}}</option>
             {% endfor %}
