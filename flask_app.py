@@ -23,6 +23,13 @@ def mapper():
     filename = getMap(path)
     return send_file(filename, mimetype='image/gif')
 
+@app.route('/sample-path')
+def samplePath():
+    places = getPlaces()
+    path = [(places[0],places[2]),(places[2],places[1])]
+    filename = getMap(path)
+    return send_file(filename, mimetype='image/gif')
+
 @app.route('/car-shop')
 def cars():
     colors = ['red','green','blue','orange']
