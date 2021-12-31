@@ -9,6 +9,7 @@ def index():
     places = getPlaces()
     return render_template('index.html', places=places)
 
+# https://stackoverflow.com/questions/8637153/how-to-return-images-in-flask-response
 @app.route('/blank-map')
 def blankMap():
     filename = getBlankMap()

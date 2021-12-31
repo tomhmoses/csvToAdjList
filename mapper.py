@@ -9,6 +9,8 @@ def getPlaces():
 def getPath(start,end):
     return [(start,end)]
 
+# https://www.geeksforgeeks.org/python-pil-imagedraw-draw-line/
+# https://pillow.readthedocs.io/en/stable/reference/ImageDraw.html
 def getMap(path):
     filename = "path-map.png"
     with Image.open("map.png") as im:
