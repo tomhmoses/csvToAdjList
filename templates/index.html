@@ -3,18 +3,18 @@
 
 <body>
     <h1>Tom's Car Shop</h1>
-    <form action="api" method="post">
-        <label for="car">Choose a car:</label>
-        <select id="car" name="car">
-            {% for car in cars %}
-                <option value="{{car}}">{{car}}</option>
+    <form action="mapper" method="post">
+        <label for="start">Choose a car:</label>
+        <select id="start" name="start">
+            {% for place in places %}
+                <option value="{{place}}">{{place}}</option>
             {% endfor %}
         </select>
 
-        <label for="color">Choose a colour:</label>
-        <select id="color" name="color">
-            {% for color in colors %}
-                <option value="{{color}}">{{color}}</option>
+        <label for="end">Choose a colour:</label>
+        <select id="end" name="end">
+            {% for place in places %}
+                <option value="{{place}}">{{place}}</option>
             {% endfor %}
         </select>
 

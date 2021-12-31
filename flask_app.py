@@ -1,19 +1,26 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_file
 from scvToAdjList import convert 
+from mapper import getPath, getMap, getPlaces, getBlankMap
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    colors = ['red','green','blue','orange']
-    carModels = ['Audi','Mercedes','BMW']
-    return render_template('index.html', colors=colors, cars=carModels)
+    places = getPlaces()
+    return render_template('index.html', places=places)
 
-@app.route('/api', methods=['POST'])
-def api():
-    color = request.form['color']
-    car = request.form['car']
-    return f'A {color} {car}, coming right up...'
+@app.route('/blank-map')
+def blankMap():
+    filename = getBlankMap()
+    return send_file(filename, mimetype='image/gif')
+
+@app.route('/mapper', methods=['POST'])
+def mapper():
+    start = request.form['start']
+    end = request.form['end']
+    path = getPath(start,end)
+    filename = getMap(path)
+    return send_file(filename, mimetype='image/gif')
 
 @app.route('/car-shop')
 def cars():
@@ -32,7 +39,11 @@ def adj():
     result = convert()
     return result
 
-
+def serve_pil_image(pil_img):
+    img_io = BytesIO()
+    pil_img.save(img_io, 'JPEG', quality=70)
+    # img_io.seek(0,0)
+    return send_file(img_io, mimetype='image/jpeg')
 
 
 if __name__ == '__main__':
