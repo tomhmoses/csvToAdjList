@@ -16,7 +16,8 @@ def getMap(path):
     with Image.open("map.png") as im:
         draw = ImageDraw.Draw(im)
         for pathPart in path:
-             draw.line([IMAGE_LOCATIONS[pathPart[0]],IMAGE_LOCATIONS[pathPart[1]]], fill="red", width=10)
+             draw.line([IMAGE_LOCATIONS[pathPart[0]],IMAGE_LOCATIONS[pathPart[1]]], fill=(66, 99, 245,50), width=20)
+             draw.line([IMAGE_LOCATIONS[pathPart[0]],IMAGE_LOCATIONS[pathPart[1]]], fill=(66, 135, 245,128), width=10)
         im.save(filename)
     return filename
 
