@@ -15,6 +15,18 @@ def api():
     car = request.form['car']
     return f'A {color} {car}, coming right up...'
 
+@app.route('/car-shop')
+def cars():
+    colors = ['red','green','blue','orange']
+    carModels = ['Audi','Mercedes','BMW']
+    return render_template('car-shop.html', colors=colors, cars=carModels)
+
+@app.route('/car-factory', methods=['POST'])
+def carShop():
+    color = request.form['color']
+    car = request.form['car']
+    return f'A {color} {car}, coming right up...'
+
 @app.route('/adj')
 def adj():
     result = convert()

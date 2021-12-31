@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Tom's Car Shop</h1>
+    <form action="car-factory" method="post">
+        <label for="car">Choose a car:</label>
+        <select id="car" name="car">
+            {% for car in cars %}
+                <option value="{{car}}">{{car}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="color">Choose a colour:</label>
+        <select id="color" name="color">
+            {% for color in colors %}
+                <option value="{{color}}">{{color}}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="submit" />
+    </form>
+</body>
+
+</html>
