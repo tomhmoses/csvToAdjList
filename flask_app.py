@@ -1,3 +1,4 @@
+from io import BytesIO
 from flask import Flask, request, render_template, send_file
 from scvToAdjList import convert 
 from mapper import getPath, getMap, getPlaces, getBlankMap
