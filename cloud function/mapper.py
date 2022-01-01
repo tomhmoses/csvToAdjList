@@ -32,7 +32,7 @@ def drawPathOnImage(im, path, imageLocations, filename):
     for pathPart in path:
         startAndEndXYs = [imageLocations[pathPart[0]],imageLocations[pathPart[1]]]
         draw.line(startAndEndXYs, fill=(66, 135, 245,128), width=20)
-        draw.line(startAndEndXYs, fill=(66, 135, 245,128), width=10)
+        draw.line(startAndEndXYs, fill=(66, 135, 245,200), width=10)
     im.save(filename)
     return filename
 
@@ -42,7 +42,7 @@ def getMap(path, mapFilename, imageLocations):
         return drawPathOnImage(im, path, imageLocations, filename)
 
 def getClearMap(path, dimensions, imageLocations):
-    filename = "tmp/path-map.png"
+    filename = "/tmp/path-map.png"
     im = Image.new('RGBA', dimensions, (255, 0, 0, 0))
     return drawPathOnImage(im, path, imageLocations, filename)
 
