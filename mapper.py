@@ -22,7 +22,6 @@ def getSchoolPath(start,end):
 
 def getTownPath(start,end):
     graph = convert('town-graph.csv', symmetrical=True)
-    print(graph)
     dijkstras = Dijkstra(graph, start, end)
     return dijkstras.getDestinationPath()
 
