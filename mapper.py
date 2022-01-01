@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 
-PLACES = ['Atrium','Biology Lab','Classroom','Dinner Hall']
-IMAGE_LOCATIONS = {'Atrium':(300,350),'Biology Lab':(1175,400),'Classroom':(475,700),'Dinner Hall':(1225,700)}
+PLACES = ['Atrium','Biology Lab','Corridor','Dinner Hall']
+IMAGE_LOCATIONS = {'Atrium':(300,350),'Biology Lab':(1175,400),'Corridor':(475,700),'Dinner Hall':(1225,700)}
 
 def getPlaces():
     return PLACES

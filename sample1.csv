@@ -1,4 +1,5 @@
-,Atrium,Balcony,Cafe
-Atrium,,4,
-Balcony,4,,5
-Cafe,,5,
+,Atrium,Biology Lab,Corridor,Dinner Hall
+Atrium,,4,2,8
+Biology Lab,4,,1,
+Corridor,2,1,,9
+Dinner Hall,8,,9,
