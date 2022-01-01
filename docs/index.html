@@ -6,145 +6,149 @@
     <form>
         <label for="start">Choose a start:</label>
         <select id="start" name="start">
-            
+
             <option value="A">A</option>
-            
+
             <option value="B">B</option>
-            
+
             <option value="C">C</option>
-            
+
             <option value="D">D</option>
-            
+
             <option value="E">E</option>
-            
+
             <option value="F">F</option>
-            
+
             <option value="G">G</option>
-            
+
             <option value="H">H</option>
-            
+
             <option value="I">I</option>
-            
+
             <option value="J">J</option>
-            
+
             <option value="K">K</option>
-            
+
             <option value="L">L</option>
-            
+
             <option value="M">M</option>
-            
+
             <option value="N">N</option>
-            
+
             <option value="O">O</option>
-            
+
             <option value="P">P</option>
-            
+
             <option value="Q">Q</option>
-            
+
             <option value="R">R</option>
-            
+
             <option value="S">S</option>
-            
+
             <option value="T">T</option>
-            
+
             <option value="U">U</option>
-            
+
             <option value="V">V</option>
-            
+
             <option value="W">W</option>
-            
+
             <option value="X">X</option>
-            
+
             <option value="Y">Y</option>
-            
+
             <option value="Z">Z</option>
-            
+
             <option value="AA">AA</option>
-            
+
             <option value="AB">AB</option>
-            
+
             <option value="AC">AC</option>
-            
+
             <option value="AD">AD</option>
-            
+
             <option value="AE">AE</option>
-            
+
             <option value="AF">AF</option>
-            
+
         </select>
 
         <label for="end">Choose an end:</label>
         <select id="end" name="end">
-            
+
             <option value="A">A</option>
-            
+
             <option value="B">B</option>
-            
+
             <option value="C">C</option>
-            
+
             <option value="D">D</option>
-            
+
             <option value="E">E</option>
-            
+
             <option value="F">F</option>
-            
+
             <option value="G">G</option>
-            
+
             <option value="H">H</option>
-            
+
             <option value="I">I</option>
-            
+
             <option value="J">J</option>
-            
+
             <option value="K">K</option>
-            
+
             <option value="L">L</option>
-            
+
             <option value="M">M</option>
-            
+
             <option value="N">N</option>
-            
+
             <option value="O">O</option>
-            
+
             <option value="P">P</option>
-            
+
             <option value="Q">Q</option>
-            
+
             <option value="R">R</option>
-            
+
             <option value="S">S</option>
-            
+
             <option value="T">T</option>
-            
+
             <option value="U">U</option>
-            
+
             <option value="V">V</option>
-            
+
             <option value="W">W</option>
-            
+
             <option value="X">X</option>
-            
+
             <option value="Y">Y</option>
-            
+
             <option value="Z">Z</option>
-            
+
             <option value="AA">AA</option>
-            
+
             <option value="AB">AB</option>
-            
+
             <option value="AC">AC</option>
-            
+
             <option value="AD">AD</option>
-            
+
             <option value="AE">AE</option>
-            
+
             <option value="AF">AF</option>
-            
+
         </select>
 
         <input type="submit" value="submit" />
     </form>
-    <img id="map" src="town-map.jpeg" style="max-width: 100%;">
+    <div style="position: relative;">
+        <img id="map" src="town-map.jpeg" style="max-width: 100%;">
+        <img id="path" src=""
+            style="max-width: 100%; position: absolute; left: 0; top: 0; z-index: 1;">
+    </div>
     <script>
         window.onload = function () {
             var form = document.querySelector("form");
@@ -154,8 +158,8 @@
             event.preventDefault();
             var start = document.getElementById("start").value
             var end = document.getElementById("end").value
-            var src = "town-map/" + start + "/" + end
-            document.getElementById("map").src = src
+            var src = "https://europe-west2-tom-town-map.cloudfunctions.net/map?start=" + start + "&end=" + end
+            document.getElementById("path").src = src
         }
     </script>
 </body>

@@ -27,19 +27,30 @@ def getTownPath(start,end):
 
 # https://www.geeksforgeeks.org/python-pil-imagedraw-draw-line/
 # https://pillow.readthedocs.io/en/stable/reference/ImageDraw.html
+def drawPathOnImage(im, path, imageLocations, filename):
+    draw = ImageDraw.Draw(im)
+    for pathPart in path:
+        startAndEndXYs = [imageLocations[pathPart[0]],imageLocations[pathPart[1]]]
+        draw.line(startAndEndXYs, fill=(66, 99, 245,50), width=20)
+        draw.line(startAndEndXYs, fill=(66, 135, 245,128), width=10)
+    im.save(filename)
+    return filename
+
 def getMap(path, mapFilename, imageLocations):
     filename = "path-map.png"
     with Image.open(mapFilename) as im:
-        draw = ImageDraw.Draw(im)
-        for pathPart in path:
-            startAndEndXYs = [imageLocations[pathPart[0]],imageLocations[pathPart[1]]]
-            draw.line(startAndEndXYs, fill=(66, 99, 245,50), width=20)
-            draw.line(startAndEndXYs, fill=(66, 135, 245,128), width=10)
-        im.save(filename)
-    return filename
+        return drawPathOnImage(im, path, imageLocations, filename)
+
+def getClearMap(path, dimensions, imageLocations):
+    filename = "path-map.png"
+    im = Image.new('RGBA', dimensions, (255, 0, 0, 0))
+    return drawPathOnImage(im, path, imageLocations, filename)
 
 def getSchoolMap(path):
     return getMap(path, "school-map.png", SCHOOL_IMAGE_LOCATIONS)
+
+def getClearTownMap(path):
+    return getClearMap(path, (1000, 1080), TOWN_IMAGE_LOCATIONS)
 
 def getTownMap(path):
     return getMap(path, "town-map-with-labels.jpeg", TOWN_IMAGE_LOCATIONS)
