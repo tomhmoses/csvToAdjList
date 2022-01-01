@@ -1,4 +1,6 @@
 from PIL import Image, ImageDraw
+from mydijkstras import Dijkstra
+from scvToAdjList import convert 
 
 PLACES = ['Atrium','Biology Lab','Corridor','Dinner Hall']
 IMAGE_LOCATIONS = {'Atrium':(300,350),'Biology Lab':(1175,400),'Corridor':(475,700),'Dinner Hall':(1225,700)}
@@ -7,7 +9,9 @@ def getPlaces():
     return PLACES
 
 def getPath(start,end):
-    return [(start,end)]
+    graph = convert()
+    dijkstras = Dijkstra(graph, "Biology Lab", "Dinner Hall")
+    return dijkstras.getDestinationPath()
 
 # https://www.geeksforgeeks.org/python-pil-imagedraw-draw-line/
 # https://pillow.readthedocs.io/en/stable/reference/ImageDraw.html

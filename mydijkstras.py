@@ -27,11 +27,9 @@ class Dijkstra:
         nodes = {}
         for place, neighbors in self.graph.items():
             nodes[place] = Node(place, neighbors)
-            # print(f'built node for: {place}')
         return nodes
 
     def considerUnvisitedNeighbours(self):
-        # print(f'considering neighbors of: {self.current.name}')
         for neighbor, distance in self.current.neighbors.items():
             if not self.nodes[neighbor].visited:
                 if self.nodes[neighbor].distance == None or self.nodes[neighbor].distance > self.current.distance + distance:
@@ -44,10 +42,7 @@ class Dijkstra:
                         prevPath = self.current.path.copy()
                     self.nodes[neighbor].path = prevPath
                     self.nodes[neighbor].path.append(pathToAdd)
-                    # print(f'path to add: {pathToAdd}')
-                    # print(f'current path for {self.nodes[neighbor].name}  = {self.nodes[neighbor].path}')
         self.current.visited = True
-        # print(f'visited: {self.current.name}')
 
     def setNewCurrent(self):
         currentLowest = None
@@ -55,20 +50,10 @@ class Dijkstra:
             # print(f'testing: {node.name}')
             if not node.visited and (node.distance or node.distance == 0) and (currentLowest == None or node.distance < currentLowest.distance):
                 currentLowest = node
-            #     print(f'set current lowest to: {currentLowest.name}')
-            # elif not node.visited and node.distance:
-            #     print(f'was not visited and had distance, but was not lower: {node.name}')
-            # else:
-            #     print(f'{node.name}: visited: {node.visited}, distance: {node.distance}')
-
-            
         self.current = currentLowest
 
     def run(self):
         self.start.distance = 0
-        # print(f'start distance: {self.start.distance}')
-        # print(f'bio lab distance: {self.nodes["Biology Lab"].distance}')
-        # assume the destination is connected in the graph
         while not self.destination.visited:
             self.setNewCurrent()
             self.considerUnvisitedNeighbours()
