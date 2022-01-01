@@ -3,23 +3,37 @@
 
 <body>
     <h1>Town Navigator</h1>
-    <form action="town-mapper" method="post">
-        <label for="start">Choose a car:</label>
+    <form>
+        <label for="start">Choose a start:</label>
         <select id="start" name="start">
             {% for place in places %}
-                <option value="{{place}}">{{place}}</option>
+            <option value="{{place}}">{{place}}</option>
             {% endfor %}
         </select>
 
-        <label for="end">Choose a colour:</label>
+        <label for="end">Choose an end:</label>
         <select id="end" name="end">
             {% for place in places %}
-                <option value="{{place}}">{{place}}</option>
+            <option value="{{place}}">{{place}}</option>
             {% endfor %}
         </select>
 
         <input type="submit" value="submit" />
     </form>
+    <img id="map" src="town-map" style="max-width: 100%;">
+    <script>
+        window.onload = function () {
+            var form = document.querySelector("form");
+            form.onsubmit = updateImage.bind(form);
+        }
+        function updateImage(event) {
+            event.preventDefault();
+            var start = document.getElementById("start").value
+            var end = document.getElementById("end").value
+            var src = "town-map/" + start + "/" + end
+            document.getElementById("map").src = src
+        }
+    </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 from io import BytesIO
 from flask import Flask, request, render_template, send_file
 from scvToAdjList import convert 
-from mapper import getSchoolPath, getMap, getSchoolPlaces, getBlankMap, getTownPath, getTownPlaces
+from mapper import getSchoolPath, getSchoolMap, getSchoolPlaces, getBlankMap, getTownPath, getTownPlaces, getTownMap, getLabeledTownMap
 
 app = Flask(__name__)
 
@@ -10,12 +10,16 @@ def index():
     places = getTownPlaces()
     return render_template('index.html', places=places)
 
-@app.route('/town-mapper', methods=['POST'])
-def townMapper():
-    start = request.form['start']
-    end = request.form['end']
+@app.route('/town-map/<start>/<end>')
+def townMapper(start,end):
     path = getTownPath(start,end)
-    return str(path)
+    filename = getTownMap(path)
+    return send_file(filename, mimetype='image/gif')
+
+@app.route('/town-map')
+def blankTownMap():
+    filename = getLabeledTownMap()
+    return send_file(filename, mimetype='image/gif')
 
 @app.route('/school')
 def school():
@@ -33,14 +37,14 @@ def schoolMapper():
     start = request.form['start']
     end = request.form['end']
     path = getSchoolPath(start,end)
-    filename = getMap(path)
+    filename = getSchoolMap(path)
     return send_file(filename, mimetype='image/gif')
 
 @app.route('/sample-path')
 def samplePath():
     places = getSchoolPlaces()
     path = [(places[0],places[2]),(places[2],places[1])]
-    filename = getMap(path)
+    filename = getSchoolMap(path)
     return send_file(filename, mimetype='image/gif')
 
 @app.route('/car-shop')
