@@ -7,7 +7,7 @@ A simple mapping application written in Python, using [Dijkstra's algorithm](htt
 and [Flask](https://flask.palletsprojects.com/en/2.0.x/) to return this as an image from a HTTP Request.
 
 Currently hosted using (GitHub Pages)[https://pages.github.com] for the frontend
-and [Google Cloud Functions](https://cloud.google.com/functions) for the backend.
+and (Google Cloud Functions)[https://cloud.google.com/functions] for the backend.
 
 <details>
   <summary>Frontend details</summary>
